@@ -263,10 +263,6 @@ SOFTWARE.
 #### [Epicodus](https://www.epicodus.com/)
 >"A school for tech careers... to help people learn the skills they need to get great jobs."
 
-#### [The Internet](https://lh3.googleusercontent.com/proxy/6QlFHq-RHi9-Jd7pjdpwFdWMTYy5y26LesKZG-TO7rD3ZCh2BESLUzktpd27TAXSiGd19f8B3AxMn5Nbos1g6QCHAQOTrvVsAVnqS7RKSCQLV6s)
-> "...The Internet is becoming the town square for the global village of tomorrow..."
-> - Bill Gates
-
 ------------------------------
 
 <center><a href="#">Return to Top</a></center>
