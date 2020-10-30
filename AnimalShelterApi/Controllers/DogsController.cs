@@ -23,7 +23,7 @@ namespace AnimalShelterApi.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Dog>> Get(string search)
+    public ActionResult<IEnumerable<Dog>> Get()
     {
       var query = _db.Dogs.AsQueryable();
 
@@ -75,8 +75,21 @@ namespace AnimalShelterApi.Controllers
     {
       List<Dog> allDogs = _db.Dogs.ToList();
       Random rand = new Random();
-      int temp = rand.Next(0, allDogs.Count()-1);
+      int temp = rand.Next(0, allDogs.Count());
       return allDogs[temp];
+    }
+
+    [HttpGet("search")]
+    public ActionResult<IEnumerable<Dog>> GetSearch(string breed)
+    {
+      var query = _db.Dogs.AsQueryable();
+
+      if (breed != null)
+      {
+        query = query.Where(entry => entry.DogBreed.ToUpper() == breed.ToUpper());
+      }
+
+      return query.OrderByDescending(x => x.DogName).ToList();
     }
 
   }
