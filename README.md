@@ -131,25 +131,30 @@ This is an Epicodus Friday Project an API that functions as an archive for cats 
   3) Change the server, port, and user id as necessary. Replace 'epicodus' with relevant MySQL password (set at installation of MySQL).
 
   #### Database
-  1) Navigate to TravelApi.Solution/TravelApi directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/TravelApi.Solution/TravelApi`).
+
+  1) Navigate to AnimalShelterApi.Solution/AnimalShelterApi directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/AnimalShelterApi.Solution/AnimalShelterApi`).
   2) Run the command `dotnet ef database update` to generate the database through Entity Framework Core.
   3) (Optional) To update the database with any changes to the code, run the command `dotnet ef migrations add <MigrationsName>` which will use Entity Framework Core's code-first principle to generate a database update. After, run the previous command `dotnet ef database update` to update the database.
 
   #### Launch the API
-  1) Navigate to CoffeeTrackerAPI.Solution/CoffeeTrackerAPI directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/TravelApi.Solution/TravelApi`).
+
+  1) Navigate to AnimalShelterApi.Solution/AnimalShelterApi directory using the MacOS Terminal or Windows Powershell (e.g. `cd Desktop/AnimalShelterApi.Solution/AnimalShelterApi`).
   2) Run the command `dotnet run` to have access to the API in Postman or browser.
 
 ------------------------------
 
 ## 🛰️ API Documentation
+
 Explore the API endpoints in Postman or a browser. You will not be able to utilize authentication in a browser.
 
 ### Using Swagger Documentation 
-To explore the CoffeeTracker API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:4005/swagger`
+
+To explore the Animal Shelter API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:5000/swagger`
 
 ### Using the JSON Web Token
+
 In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
-* Open Postman and create a POST request using the URL: `http://localhost:4005/api/users/authenticate`
+* Open Postman and create a POST request using the URL: `http://localhost:5000/api/users/authenticate`
 * Add the following query to the request as raw data in the Body tab:
 ```
 {
@@ -160,92 +165,49 @@ In order to be authorized to use the POST, PUT, DELETE functionality of the API,
 * The token will be generated in the response. Copy and paste it as the Token parameter in the Authorization tab.
 
 ### Note on CORS
+
 CORS is a W3C standard that allows a server to relax the same-origin policy. It is not a security feature, CORS relaxes security. It allows a server to explicitly allow some cross-origin requests while rejecting others. An API is not safer by allowing CORS.
 For more information or to see how CORS functions, see the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-2.2#how-cors).
 
 #### Example Query
-```
-https://localhost:5000/api/beverage/?name=mocha&limit=200&start=20
-```
 
-To use default, _don't include_ `limit` and `start` or set them equal to zero.
+```
+https://localhost:5000/api/cats/search?breed=persian
+```
 
 ..........................................................................................
 
 ### Endpoints
-Base URL: `https://localhost:4005`
 
-
-![picture](images/swaggerEndpoints.jpg)
-![picture](images/users.jpg)
+Base URL: `https://localhost:5000`
+Cats URL: `https://localhost:5000/cats`
+Dogs URL: `https://localhost:5000/dogs`
 
 #### HTTP Request Structure
 ```
-GET /api/{co
-POST /api/reviews
-GET /api/reviews/{id}
-PUT /api/reviews/{id}
-DELETE /api/reviews/{id}
+GET /api/cats
+POST /api/cats
+GET /api/cats/{id}
+PUT /api/cats/{id}
+DELETE /api/cats/{id}
+GET /api/cats/popular
+GET /api/cats/random
+GET /api/cats/search?breed={BreedName}
 ```
 
 #### Example Query
 ```
-https://localhost:5000/api/reviews/2
+https://localhost:5000/api/cats/2
 ```
 
 #### Sample JSON Response
 ```
 {
-    "Id": 2,
-    "Destination": "Sunny beach",
-    "ReviewDetails": "It's super nice",
-    "Country": "Hawaii USA",
-    "City": "Maui",
-    "Rating": 5
-}
-```
-
-..........................................................................................
-
-#### HTTP Request
-```
-GET /api/reviews
-POST /api/reviews
-GET /api/reviews/{id}
-PUT /api/reviews/{id}
-DELETE /api/reviews/{id}
-GET /api/reviews/popular
-GET /api/reviews/random
-GET /api/reviews/search
-```
-
-#### Path Parameters
-| Parameter | Type | Default | Required | Description |
-| :---: | :---: | :---: | :---: | --- |
-| search | string | none | true | Return any review from a specific country or region of origin. |
-
-#### Example Query
-```
-https://localhost:5000/api/reviews?search=USA
-```
-
-#### Sample JSON Response
-```
-{
-    "Id": 2,
-    "Destination": "Sunny beach",
-    "ReviewDetails": "It's super nice",
-    "Country": "Hawaii USA",
-    "City": "Maui",
-    "Rating": 5
-},
-{
-    "Id": 3,
-    "Destination": "Senate building",
-    "ReviewDetails": "It's bad",
-    "Country": "Washington USA",
-    "City": "Washington DC",
-    "Rating": 1
+    "CatId": 2,
+    "CatName": "Baseball",
+    "CatBreed": "American",
+    "CatAge": 6,
+    "CatDetails": "Really Likes knocking things over",
 }
 ```
 
@@ -257,7 +219,6 @@ https://localhost:5000/api/reviews?search=USA
 
 | Author | GitHub | Email |
 |--------|:------:|:-----:|
-| [Daniel Schaaf](https://linkedin.com/in/danielschaaf) | [dschaaf89](https://github.com/dschaaf89) |  [Daniel.schaaf@outlook.com](mailto:Daniel.schaaf@outlook.com) |
 | [William Donovan-Seid](https://linkedin.com/in/wdonovanseid) | [wdonovanseid](https://github.com/wdonovanseid) |  [wdstwo@live.com](mailto:wdstwo@live.com) |
 
 ------------------------------
@@ -270,11 +231,11 @@ If you have any feedback or concerns, please contact one of the contributors.
 
 ### ⚖️ License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2020 Daniel Schaaf and William Donovan-Seid. All Rights Reserved.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Copyright (C) 2020 William Donovan-Seid. All Rights Reserved.
 ```
 MIT License
 
-Copyright (c) 2020 **_Daniel Schaaf and William Donovan-Seid_**
+Copyright (c) 2020 **_William Donovan-Seid_**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
