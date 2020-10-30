@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -104,14 +103,14 @@ namespace AnimalShelterApi
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
+            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
             });
-
-            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelterApi.Migrations
 {
     [DbContext(typeof(AnimalShelterApiContext))]
-    [Migration("20201030161306_Initial")]
+    [Migration("20201030213700_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,22 @@ namespace AnimalShelterApi.Migrations
                             CatBreed = "Persian",
                             CatDetails = "Likes knocking things over",
                             CatName = "Snowball"
+                        },
+                        new
+                        {
+                            CatId = 2,
+                            CatAge = 6,
+                            CatBreed = "American",
+                            CatDetails = "Really Likes knocking things over",
+                            CatName = "Baseball"
+                        },
+                        new
+                        {
+                            CatId = 3,
+                            CatAge = 9,
+                            CatBreed = "Persian",
+                            CatDetails = "Super Likes knocking things over",
+                            CatName = "Football"
                         });
                 });
 
@@ -79,6 +95,22 @@ namespace AnimalShelterApi.Migrations
                             DogBreed = "Pitbull",
                             DogDetails = "Chases own shadow",
                             DogName = "Sam"
+                        },
+                        new
+                        {
+                            DogId = 2,
+                            DogAge = 1,
+                            DogBreed = "Pitbull",
+                            DogDetails = "Chases own shadow sometimes",
+                            DogName = "Sammy"
+                        },
+                        new
+                        {
+                            DogId = 3,
+                            DogAge = 20,
+                            DogBreed = "Pitbull",
+                            DogDetails = "Chases own shadow all the time",
+                            DogName = "Sammuel"
                         });
                 });
 #pragma warning restore 612, 618

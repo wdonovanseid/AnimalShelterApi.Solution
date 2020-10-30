@@ -42,12 +42,22 @@ namespace AnimalShelterApi.Migrations
             migrationBuilder.InsertData(
                 table: "Cats",
                 columns: new[] { "CatId", "CatAge", "CatBreed", "CatDetails", "CatName" },
-                values: new object[] { 1, 3, "Persian", "Likes knocking things over", "Snowball" });
+                values: new object[,]
+                {
+                    { 1, 3, "Persian", "Likes knocking things over", "Snowball" },
+                    { 2, 6, "American", "Really Likes knocking things over", "Baseball" },
+                    { 3, 9, "Persian", "Super Likes knocking things over", "Football" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Dogs",
                 columns: new[] { "DogId", "DogAge", "DogBreed", "DogDetails", "DogName" },
-                values: new object[] { 1, 2, "Pitbull", "Chases own shadow", "Sam" });
+                values: new object[,]
+                {
+                    { 1, 2, "Pitbull", "Chases own shadow", "Sam" },
+                    { 2, 1, "Pitbull", "Chases own shadow sometimes", "Sammy" },
+                    { 3, 20, "Pitbull", "Chases own shadow all the time", "Sammuel" }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
