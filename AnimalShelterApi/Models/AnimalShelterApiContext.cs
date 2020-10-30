@@ -16,13 +16,13 @@ namespace AnimalShelterApi.Models
     {
       builder.Entity<Cat>()
           .HasData(
-              new Cat { CatId = 1, CatName = "Snowball", CatBreed = "Persian", CatDetails = "Likes knocking things over"}
+              new Cat { CatId = 1, CatName = "Snowball", CatBreed = "Persian", CatAge= 3, CatDetails = "Likes knocking things over"}
           );
 
       builder.Entity<Dog>()
           .HasData(
-              new Dog { DogId = 1, DogName = "Sam", DogBreed = "Pitbull", DogDetails = "Chases own shadow"}
-          )
+              new Dog { DogId = 1, DogName = "Sam", DogBreed = "Pitbull", DogAge= 2, DogDetails = "Chases own shadow"}
+          );
     }
   }
 }
