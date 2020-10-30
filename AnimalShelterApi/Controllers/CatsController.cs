@@ -1,11 +1,8 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using AnimalShelterApi.Models;
 
@@ -25,7 +22,7 @@ namespace AnimalShelterApi.Controllers
     [HttpGet]
     public ActionResult<IEnumerable<Cat>> Get()
     {
-      var query = _db.Cats.AsQueryable();
+      IEnumerable<Cat> query = _db.Cats.AsQueryable();
 
       return query.OrderByDescending(x => x.CatName).ToList();
     }
@@ -63,9 +60,9 @@ namespace AnimalShelterApi.Controllers
     public ActionResult<IEnumerable<Cat>> GetMostPopularBreed()
     {
       IEnumerable<Cat> query = _db.Cats.AsQueryable();
-      var breedGroup = query.GroupBy(x => x.CatBreed);
-      var maxCount = breedGroup.Max(g => g.Count());
-      var mostPopular = breedGroup.Where(x => x.Count() == maxCount).Select(x => x.Key).ToList();
+      IEnumerable<IGrouping<string, Cat>> breedGroup = query.GroupBy(x => x.CatBreed);
+      int maxCount = breedGroup.Max(g => g.Count());
+      List<string> mostPopular = breedGroup.Where(x => x.Count() == maxCount).Select(x => x.Key).ToList();
       query = query.Where(entry => entry.CatBreed == mostPopular[0]);
       return query.OrderByDescending(x => x.CatAge).ToList();
     }
@@ -82,7 +79,7 @@ namespace AnimalShelterApi.Controllers
     [HttpGet("search")]
     public ActionResult<IEnumerable<Cat>> GetSearch(string breed)
     {
-      var query = _db.Cats.AsQueryable();
+      IEnumerable<Cat> query = _db.Cats.AsQueryable();
 
       if (breed != null)
       {
