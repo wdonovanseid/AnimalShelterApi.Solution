@@ -149,12 +149,12 @@ Explore the API endpoints in Postman or a browser. You will not be able to utili
 
 ### Using Swagger Documentation 
 
-To explore the Animal Shelter API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `http://localhost:5000/swagger`
+To explore the Animal Shelter API with NSwag, launch the project using `dotnet run` with the Terminal or Powershell, and input the following URL into your browser: `https://localhost:5000/swagger`
 
 ### Using the JSON Web Token
 
 In order to be authorized to use the POST, PUT, DELETE functionality of the API, please authenticate yourself through Postman.
-* Open Postman and create a POST request using the URL: `http://localhost:5000/api/users/authenticate`
+* Open Postman and create a POST request using the URL: `https://localhost:5000/api/users/authenticate`
 * Add the following query to the request as raw data in the Body tab:
 ```
 {
